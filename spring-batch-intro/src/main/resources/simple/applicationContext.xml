@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/batch"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:batch="http://www.springframework.org/schema/batch"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xsi:schemaLocation="
+               http://www.springframework.org/schema/beans
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+               http://www.springframework.org/schema/batch
+               http://www.springframework.org/schema/batch/spring-batch-2.1.xsd
+            ">
+
+  <job id="simpleJob">
+    <step id="simpleStep1">
+      <tasklet>
+        <chunk reader="simpleReader" processor="simpleProcessor" writer="simpleWriter" commit-interval="2"/>
+      </tasklet>
+    </step>
+  </job>
+
+  <beans:bean id="syncJobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+    <beans:property name="jobRepository" ref="jobRepository"/>
+  </beans:bean>
+
+  <!-- use in-memory job storage -->
+  <beans:bean id="jobRepository" class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean"/>
+
+  <beans:bean id="simpleReader" class="net.ttddyy.demo.simple.SimpleReader"/>
+  <beans:bean id="simpleProcessor" class="net.ttddyy.demo.simple.SimpleProcessor"/>
+  <beans:bean id="simpleWriter" class="net.ttddyy.demo.simple.SimpleWriter"/>
+
+  <beans:bean id="transactionManager" class="org.springframework.batch.support.transaction.ResourcelessTransactionManager"/>
+</beans:beans>
