@@ -2,3 +2,5 @@ sourcecode used for demo/presentation
 
 spring-batch-intro : introduction of spring batch 
   http://bit.ly/ttddyy_spring-batch-intro
+
+liquibase-demo : liquibase demo
