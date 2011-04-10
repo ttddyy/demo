@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+  <!--
+   |  Release Version 1
+   +-->
+
+  <changeSet id="1" author="foo">
+    <comment>Create test1 Table (XML style)</comment>
+    <createTable tableName="test1">
+      <column type="int" name="id">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column type="varchar(50)" name="name">
+        <constraints nullable="false"/>
+      </column>
+      <column defaultValue="1" type="boolean" name="active"/>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="2" author="bar">
+    <comment>Create test2 Table (SQL style)</comment>
+    <sql>CREATE TABLE test2 (id int PRIMARY KEY);</sql>
+    <rollback>DROP TABLE test2;</rollback>
+  </changeSet>
+
+
+</databaseChangeLog>
