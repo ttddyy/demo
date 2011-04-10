@@ -8,7 +8,7 @@
   <packaging>jar</packaging>
 
   <name>liquibase-demo</name>
-  <url>https://github.com/ttddyy/demo/liquibase-demo</url>
+  <url>https://github.com/ttddyy/demo</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
